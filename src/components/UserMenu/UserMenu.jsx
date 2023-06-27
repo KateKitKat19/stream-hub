@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { logOut } from 'redux/auth/operations';
+import { logOut } from '../../redux/auth/operations';
 import { useAuth } from 'hooks/useAuth';
 import { Text, Button, HStack } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';

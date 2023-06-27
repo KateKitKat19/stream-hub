@@ -59,11 +59,35 @@ const streamersSlice = createSlice({
       state.isLoading = false;
       state.error = null;
       state.upvotedStreamers.push(action.payload);
+      state.allStreamers.filter(streamer => {
+        return streamer._id === action.payload._id
+          ? { ...action.payload }
+          : streamer;
+      });
     },
 
-    [downvoteStreamer.fulfilled](state, _) {
+    [downvoteStreamer.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
+      state.allStreamers.filter(streamer => {
+        return streamer._id === action.payload._id
+          ? { ...action.payload }
+          : streamer;
+      });
+      state.upvotedStreamers.filter(streamer => {
+        console.log('streamer._id: ', streamer._id, typeof streamer._id);
+        console.log(
+          'action.payload._id: ',
+          action.payload._id,
+          typeof action.payload._id
+        );
+
+        console.log(
+          'streamer._id !== action.payload._id? ',
+          streamer._id !== action.payload._id
+        );
+        return streamer._id !== action.payload._id;
+      });
     },
   },
 });

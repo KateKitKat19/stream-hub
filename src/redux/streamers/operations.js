@@ -6,6 +6,7 @@ export const fetchAllStreamers = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const res = await axios.get('/streamers');
+      console.log('res.data in fetchAllStreamers: ', res.data);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -42,7 +43,7 @@ export const upvoteStreamer = createAsyncThunk(
   async (streamerId, thunkAPI) => {
     try {
       const response = await axios.put(`/streamers/${streamerId}/upvote`);
-      return response.data;
+      return response.data.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -54,7 +55,7 @@ export const downvoteStreamer = createAsyncThunk(
   async (streamerId, thunkAPI) => {
     try {
       const response = await axios.put(`/streamers/${streamerId}/downvote`);
-      return response.data;
+      return response.data.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }

@@ -1,7 +1,11 @@
+import { StreamersList } from 'components/StreamersList/StreamersList';
+
+
 export default function StreamersPage() {
   return (
     <div>
-      <g2>Here is my streamer page!!!</g2>
+      <h2>We`re glad to see you in our Stream-Hub</h2>
+      <StreamersList></StreamersList>
     </div>
   );
 }
