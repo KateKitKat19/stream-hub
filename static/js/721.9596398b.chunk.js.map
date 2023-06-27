@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/721.9596398b.chunk.js","mappings":"wKAAe,SAASA,IACtB,OACE,0BACE,yDAGL,C","sources":["pages/StreamersPage.jsx"],"sourcesContent":["export default function StreamersPage() {\n  return (\n    <div>\n      <g2>Here is my streamer page!!!</g2>\n    </div>\n  );\n}\n"],"names":["StreamersPage"],"sourceRoot":""}
