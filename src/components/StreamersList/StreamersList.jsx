@@ -12,15 +12,14 @@ export const StreamersList = () => {
   useEffect(() => {
     dispatch(fetchAllStreamers());
   }, [dispatch]);
-    
-    
+
   return (
     streamersList &&
     streamersList.length > 0 && (
       <ul>
         {streamersList.map(streamer => {
           return (
-            <li>
+            <li key={streamer._id}>
               <StreamerCard streamer={streamer}></StreamerCard>
             </li>
           );

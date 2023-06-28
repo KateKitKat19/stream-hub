@@ -21,66 +21,53 @@ const streamersSlice = createSlice({
   name: 'streamers',
   initialState: {
     allStreamers: [],
-    upvotedStreamers: [],
     selectedStreamer: null,
     isLoading: false,
     error: null,
   },
-  extraReducers: {
-    [fetchAllStreamers.pending]: handlePending,
-    [fetchOneStreamer.pending]: handlePending,
-    [addStreamer.pending]: handlePending,
-    [upvoteStreamer.pending]: handlePending,
-    [downvoteStreamer.pending]: handlePending,
-
-    [fetchAllStreamers.rejected]: handleRejected,
-    [fetchOneStreamer.rejected]: handleRejected,
-    [addStreamer.rejected]: handleRejected,
-    [upvoteStreamer.rejected]: handleRejected,
-    [downvoteStreamer.rejected]: handleRejected,
-
-    [fetchAllStreamers.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
-      state.allStreamers = action.payload;
-    },
-    [fetchOneStreamer.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
-      state.selectedStreamer = action.payload;
-    },
-    [addStreamer.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
-      state.allStreamers.push(action.payload);
-    },
-
-    [upvoteStreamer.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
-      state.upvotedStreamers.push(action.payload);
-
-      const index = state.allStreamers.findIndex(
-        streamer => streamer._id === action.payload._id
-      );
-      state.allStreamers.splice(index, 1, action.payload);
-    },
-
-    [downvoteStreamer.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
-
-      const indexAll = state.allStreamers.findIndex(
-        streamer => streamer._id === action.payload._id
-      );
-      state.allStreamers.splice(indexAll, 1, action.payload);
-
-      const indexUpvoted = state.upvotedStreamers.findIndex(
-        streamer => streamer._id === action.payload._id
-      );
-      state.upvotedStreamers.splice(indexUpvoted, 1);
-    },
-  },
+  extraReducers: builder =>
+    builder
+      .addCase(fetchAllStreamers.pending, handlePending)
+      .addCase(fetchOneStreamer.pending, handlePending)
+      .addCase(addStreamer.pending, handlePending)
+      .addCase(upvoteStreamer.pending, handlePending)
+      .addCase(downvoteStreamer.pending, handlePending)
+      .addCase(fetchAllStreamers.rejected, handleRejected)
+      .addCase(fetchOneStreamer.rejected, handleRejected)
+      .addCase(addStreamer.rejected, handleRejected)
+      .addCase(upvoteStreamer.rejected, handleRejected)
+      .addCase(downvoteStreamer.rejected, handleRejected)
+      .addCase(fetchAllStreamers.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.allStreamers = action.payload;
+      })
+      .addCase(fetchOneStreamer.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.selectedStreamer = action.payload;
+      })
+      .addCase(addStreamer.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.allStreamers.push(action.payload);
+      })
+      .addCase(upvoteStreamer.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        const index = state.allStreamers.findIndex(
+          streamer => streamer._id === action.payload._id
+        );
+        state.allStreamers.splice(index, 1, action.payload);
+      })
+      .addCase(downvoteStreamer.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        const index = state.allStreamers.findIndex(
+          streamer => streamer._id === action.payload._id
+        );
+        state.allStreamers.splice(index, 1, action.payload);
+      }),
 });
 
 export const streamersReducer = streamersSlice.reducer;
