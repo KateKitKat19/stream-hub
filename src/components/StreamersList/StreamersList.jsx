@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-
+import { Link } from 'react-router-dom';
 import { StreamerCard } from 'components/StreamerCard/StreamerCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllStreamers } from 'redux/streamers/operations';
@@ -20,7 +20,9 @@ export const StreamersList = () => {
         {streamersList.map(streamer => {
           return (
             <li key={streamer._id}>
-              <StreamerCard streamer={streamer}></StreamerCard>
+              <Link to={`/streamers/${streamer._id}`}>
+                <StreamerCard streamer={streamer}></StreamerCard>
+              </Link>
             </li>
           );
         })}

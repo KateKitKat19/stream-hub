@@ -1,18 +1,22 @@
 import { useDispatch } from 'react-redux';
 import { upvoteStreamer, downvoteStreamer } from 'redux/streamers/operations';
-export const StreamerCard = ({ streamer }) => {
 
+import { Image } from '@chakra-ui/react';
+
+export const StreamerCard = ({ streamer }) => {
   const dispatch = useDispatch();
 
   return (
     <>
       <div>
-        <img
+        <Image
+          borderRadius="full"
+          boxSize="200px"
+          objectFit="cover"
           src={streamer.image}
           alt={streamer.name}
-          width="100"
-          height="100"
-        ></img>
+          fallbackSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/1280px-Placeholder_view_vector.svg.png"
+        />
         <h3>Name: {streamer.name}</h3>
         <p> About: {streamer.description}</p>
         <p> Where to watch: {streamer.platform}</p>

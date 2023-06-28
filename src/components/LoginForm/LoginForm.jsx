@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
 import { validateLogin } from 'helpers/yupValidation';
 import { useFormik } from 'formik';

@@ -59,6 +59,9 @@ const streamersSlice = createSlice({
           streamer => streamer._id === action.payload._id
         );
         state.allStreamers.splice(index, 1, action.payload);
+        if (state.selectedStreamer._id === action.payload._id) {
+          state.selectedStreamer = action.payload;
+        }
       })
       .addCase(downvoteStreamer.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -67,6 +70,9 @@ const streamersSlice = createSlice({
           streamer => streamer._id === action.payload._id
         );
         state.allStreamers.splice(index, 1, action.payload);
+        if (state.selectedStreamer._id === action.payload._id) {
+          state.selectedStreamer = action.payload;
+        }
       }),
 });
 
