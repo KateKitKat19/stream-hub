@@ -11,9 +11,9 @@ export const Loader = () => (
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      height: '250px',
+      height: '100vh',
       width: '100%',
-      backgroundColor: 'lightgrey',
+      backgroundColor: 'white',
     }}
   />
 );

@@ -61,13 +61,11 @@ export const refreshUser = createAsyncThunk(
     }
 
     setAuthHeader(state.auth.token);
-
     try {
-      const res = await axios.get('auth/current');
-
-      return res.data;
+      const res = await axios.get('/auth/getCurrent');
+      return res.data.user;
     } catch (error) {
-      return thunkApi.rejectWithValue;
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );

@@ -1,8 +1,13 @@
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './components/Layout/Layout';
 import { PrivateRoute } from './routes/PrivateRoute';
 import { RestrictedRoute } from './routes/RestrictedRoute';
+import { useDispatch } from 'react-redux';
+import { refreshUser } from 'redux/auth/operations';
+import { selectRefreshing } from 'redux/auth/selectors';
+import { useSelector } from 'react-redux';
+import { Loader } from 'components/Loader/Loader';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage'));
@@ -10,7 +15,17 @@ const LoginPage = lazy(() => import('./pages/LoginPage'));
 const StreamersPage = lazy(() => import('./pages/StreamersPage'));
 
 export const App = () => {
-  return (
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  const isRefreshing = useSelector(selectRefreshing);
+
+  return isRefreshing ? (
+    <Loader></Loader>
+  ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />

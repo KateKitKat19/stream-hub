@@ -17,7 +17,6 @@ export const RegisterForm = () => {
     form.reset();
   };
 
-
   return (
     <>
       <form onSubmit={handleSubmit} autoComplete="off">
