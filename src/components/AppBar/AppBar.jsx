@@ -12,10 +12,10 @@ export const AppBar = () => {
   const { isLoggedIn } = useAuth();
   // const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <Box as="header" py="2" px="4" bg="blue.100">
+    <Box as="header">
       <Container maxW="100vw">
         <Flex justifyContent="flex-end" align-items="center">
-          {isLoggedIn ? <UserMenu /> : <AuthNav />}
+          {isLoggedIn && <UserMenu />}
           {/* <IconButton
             marginLeft={4}
             onClick={toggleColorMode}

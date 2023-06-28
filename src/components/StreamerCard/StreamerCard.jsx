@@ -1,11 +1,6 @@
-import { useDispatch } from 'react-redux';
-import { upvoteStreamer, downvoteStreamer } from 'redux/streamers/operations';
-
 import { Image } from '@chakra-ui/react';
 
 export const StreamerCard = ({ streamer }) => {
-  const dispatch = useDispatch();
-
   return (
     <>
       <div>
@@ -24,22 +19,6 @@ export const StreamerCard = ({ streamer }) => {
       <div>
         <span>Upvoted by {streamer.upvotes} users</span>
         <span> Downvoted by {streamer.downvotes} users</span>
-      </div>
-      <div>
-        <button
-          type="button"
-          aria-label="upvote"
-          onClick={() => dispatch(upvoteStreamer(streamer._id))}
-        >
-          Upvote
-        </button>
-        <button
-          type="button"
-          aria-label="downvote"
-          onClick={() => dispatch(downvoteStreamer(streamer._id))}
-        >
-          Downvote
-        </button>
       </div>
     </>
   );
