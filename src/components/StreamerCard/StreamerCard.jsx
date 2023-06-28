@@ -1,10 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { upvoteStreamer, downvoteStreamer } from 'redux/streamers/operations';
 export const StreamerCard = ({ streamer }) => {
-  console.log(
-    '🚀 ~ file: StreamerCard.jsx:2 ~ StreamerCard ~ streamer:',
-    streamer
-  );
 
   const dispatch = useDispatch();
 

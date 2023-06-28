@@ -6,7 +6,6 @@ export const fetchAllStreamers = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const res = await axios.get('/streamers');
-      console.log('res.data in fetchAllStreamers: ', res.data);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

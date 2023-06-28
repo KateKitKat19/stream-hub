@@ -25,13 +25,19 @@ const middleware = [
 const authPersistConfig = {
   key: 'auth',
   storage,
+  whitelist: ['token'],
+};
+
+const streamersPersistConfig = {
+  key: 'streamers',
+  storage,
   whitelist: [],
 };
 
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    streamers: streamersReducer,
+    streamers: persistReducer(streamersPersistConfig, streamersReducer),
   },
   middleware,
 });

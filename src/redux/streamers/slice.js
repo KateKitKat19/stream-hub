@@ -59,35 +59,26 @@ const streamersSlice = createSlice({
       state.isLoading = false;
       state.error = null;
       state.upvotedStreamers.push(action.payload);
-      state.allStreamers.filter(streamer => {
-        return streamer._id === action.payload._id
-          ? { ...action.payload }
-          : streamer;
-      });
+
+      const index = state.allStreamers.findIndex(
+        streamer => streamer._id === action.payload._id
+      );
+      state.allStreamers.splice(index, 1, action.payload);
     },
 
     [downvoteStreamer.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      state.allStreamers.filter(streamer => {
-        return streamer._id === action.payload._id
-          ? { ...action.payload }
-          : streamer;
-      });
-      state.upvotedStreamers.filter(streamer => {
-        console.log('streamer._id: ', streamer._id, typeof streamer._id);
-        console.log(
-          'action.payload._id: ',
-          action.payload._id,
-          typeof action.payload._id
-        );
 
-        console.log(
-          'streamer._id !== action.payload._id? ',
-          streamer._id !== action.payload._id
-        );
-        return streamer._id !== action.payload._id;
-      });
+      const indexAll = state.allStreamers.findIndex(
+        streamer => streamer._id === action.payload._id
+      );
+      state.allStreamers.splice(indexAll, 1, action.payload);
+
+      const indexUpvoted = state.upvotedStreamers.findIndex(
+        streamer => streamer._id === action.payload._id
+      );
+      state.upvotedStreamers.splice(indexUpvoted, 1);
     },
   },
 });
