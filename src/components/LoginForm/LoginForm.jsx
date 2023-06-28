@@ -1,32 +1,51 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
+import { validateLogin } from 'helpers/yupValidation';
+import { useFormik } from 'formik';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.currentTarget;
+  const handleSubmit = values => {
     dispatch(
       logIn({
-        email: form.elements.email.value,
-        password: form.elements.password.value,
+        email: values.email,
+        password: values.password,
       })
     );
-    form.reset();
   };
 
+  const formik = useFormik({
+    initialValues: { email: '', password: '' },
+    validationSchema: validateLogin,
+    onSubmit: handleSubmit,
+  });
+
   return (
-    <form onSubmit={handleSubmit} autoComplete="off">
-      <label>
-        Email
-        <input type="email" name="email" />
-      </label>
-      <label>
-        Password
-        <input type="password" name="password" />
-      </label>
-      <button type="submit">Log In</button>
+    <form onSubmit={formik.handleSubmit} autoComplete="off">
+      <input
+        id="email"
+        name="email"
+        type="email"
+        onChange={formik.handleChange}
+        value={formik.values.email}
+        placeholder="Email"
+      />
+      {formik.touched.email && formik.errors.email ? (
+        <div>{formik.errors.email}</div>
+      ) : null}
+      <input
+        id="password"
+        type="text"
+        name="password"
+        onChange={formik.handleChange}
+        value={formik.values.password}
+        placeholder="Password"
+      />
+      {formik.touched.password && formik.errors.password ? (
+        <div>{formik.errors.password}</div>
+      ) : null}
+      <button type="submit">Submit</button>
     </form>
   );
 };
