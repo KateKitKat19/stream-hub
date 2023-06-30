@@ -2,10 +2,10 @@
 
 body {
   margin: 0;
-  font-family: 'Lora', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Lora', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #d9f7fa;
 }
 
 code {

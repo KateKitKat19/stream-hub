@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import jwt_decode from 'jwt-decode';
 import { useDispatch } from 'react-redux';
 import { register, logIn } from 'redux/auth/operations';
+import { Button, Center, Text } from '@chakra-ui/react';
+import { FcGoogle } from 'react-icons/fc';
 
 export const GoogleAuth = ({ type }) => {
   const dispatch = useDispatch();
@@ -33,11 +35,25 @@ export const GoogleAuth = ({ type }) => {
       callback: handleLoginSuccess,
     });
 
-    google.accounts.id.renderButton(document.getElementById('signinButton'), {
-      theme: 'outline',
-      size: 'large',
-    });
+    google.accounts.id.renderButton(document.getElementById('signinButton'));
   }, [dispatch, type]);
 
-  return <div id="signinButton"></div>;
+  return (
+    <Center mt={6}>
+      <Button
+        id="signinButton"
+        w={'full'}
+        size="lg"
+        variant={'outline'}
+        leftIcon={<FcGoogle />}
+      >
+        <Center>
+          <Text>
+            {' '}
+            {type === 'login' ? 'Sign in with Google' : ' Sign up with Google'}
+          </Text>
+        </Center>
+      </Button>
+    </Center>
+  );
 };

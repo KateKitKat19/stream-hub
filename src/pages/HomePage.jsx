@@ -1,4 +1,4 @@
-import { NavLink, Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Container, ButtonGroup, Button, Text } from '@chakra-ui/react';
 
 export default function HomePage() {
