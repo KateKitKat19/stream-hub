@@ -5,9 +5,6 @@ import { register, logIn } from 'redux/auth/operations';
 import { Button, Center } from '@chakra-ui/react';
 import { FcGoogle } from 'react-icons/fc';
 
-// const CLIENT_ID =
-//   '678634402419-djp8c1atoej0ssbmb7sosa28mspt0kpt.apps.googleusercontent.com';
-
 export const GoogleAuth = ({ type }) => {
   const dispatch = useDispatch();
   const signinButtonRef = useRef(null);
@@ -34,7 +31,8 @@ export const GoogleAuth = ({ type }) => {
     }
     /*global google*/
     google.accounts.id.initialize({
-      client_id: process.env.CLIENT_ID,
+      client_id:
+        '678634402419-djp8c1atoej0ssbmb7sosa28mspt0kpt.apps.googleusercontent.com',
       callback: handleAuthSuccess,
     });
 
