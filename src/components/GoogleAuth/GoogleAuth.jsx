@@ -5,12 +5,15 @@ import { register, logIn } from 'redux/auth/operations';
 import { Button, Center } from '@chakra-ui/react';
 import { FcGoogle } from 'react-icons/fc';
 
+// const CLIENT_ID =
+//   '678634402419-djp8c1atoej0ssbmb7sosa28mspt0kpt.apps.googleusercontent.com';
+
 export const GoogleAuth = ({ type }) => {
   const dispatch = useDispatch();
   const signinButtonRef = useRef(null);
 
   useEffect(() => {
-    function handleLoginSuccess(res) {
+    function handleAuthSuccess(res) {
       const userData = jwt_decode(res.credential);
       if (type === 'register') {
         dispatch(
@@ -31,9 +34,8 @@ export const GoogleAuth = ({ type }) => {
     }
     /*global google*/
     google.accounts.id.initialize({
-      client_id:
-        '678634402419-djp8c1atoej0ssbmb7sosa28mspt0kpt.apps.googleusercontent.com',
-      callback: handleLoginSuccess,
+      client_id: process.env.CLIENT_ID,
+      callback: handleAuthSuccess,
     });
 
     google.accounts.id.renderButton(signinButtonRef.current, {
