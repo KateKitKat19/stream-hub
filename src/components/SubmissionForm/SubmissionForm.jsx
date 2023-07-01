@@ -47,7 +47,7 @@ export const Form = () => {
       <Stack spacing={4} mx={'auto'} maxW={'lg'} py={6} px={6} align={'center'}>
         <Stack align={'center'}>
           <Heading fontSize={'2xl'} textAlign={'center'} color={'#183642'}>
-            Fill in the form to join us
+            Fill in the form add streamer
           </Heading>
         </Stack>
         <Box
@@ -67,7 +67,7 @@ export const Form = () => {
               <form onSubmit={handleSubmit}>
                 <Stack spacing={4}>
                   <FormControl id="name" isRequired>
-                    <FormLabel>Your name: </FormLabel>
+                    <FormLabel>Name: </FormLabel>
                     <Field name="name" as={Input} type="text" />
                     <ErrorMessage
                       name="name"
@@ -81,7 +81,7 @@ export const Form = () => {
                       name="description"
                       as={Textarea}
                       type="text"
-                      placeholder="Tell us about yourself"
+                      placeholder="Tell us about this person"
                     />
                     <ErrorMessage
                       name="description"

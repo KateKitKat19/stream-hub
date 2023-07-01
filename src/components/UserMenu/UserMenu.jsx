@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { logOut } from '../../redux/auth/operations';
-import {  Button, HStack } from '@chakra-ui/react';
+import { Button, HStack } from '@chakra-ui/react';
 import { useLocation, useNavigate } from 'react-router-dom';
 // import { selectError } from 'redux/auth/selectors';
 // import { useSelector } from "react-redux";
@@ -10,14 +10,15 @@ export const UserMenu = () => {
   const navigate = useNavigate();
 
   const location = useLocation();
-  const isJoinPageCurrent = location.pathname.includes('/join');
-
+  const isAddStreamerPageCurrent = location.pathname.includes('/join');
 
   return (
     <HStack alignItems={'space-between'} spacing={4}>
       <Button
         type="button"
-        onClick={() => navigate(isJoinPageCurrent ? '/streamers' : '/join')}
+        onClick={() =>
+          navigate(isAddStreamerPageCurrent ? '/streamers' : '/join')
+        }
         size="md"
         bg={'teal.400'}
         color={'white'}
@@ -25,7 +26,7 @@ export const UserMenu = () => {
           bg: 'teal.500',
         }}
       >
-        {isJoinPageCurrent ? 'Back to streamers' : 'Join us'}
+        {isAddStreamerPageCurrent ? 'Back to streamers' : 'Add streamer'}
       </Button>
       <Button
         type="button"
