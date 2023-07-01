@@ -31,8 +31,7 @@ export const GoogleAuth = ({ type }) => {
     }
     /*global google*/
     google.accounts.id.initialize({
-      client_id:
-        '678634402419-djp8c1atoej0ssbmb7sosa28mspt0kpt.apps.googleusercontent.com',
+      client_id: process.env.REACT_APP_CLIENT_ID,
       callback: handleAuthSuccess,
     });
 
