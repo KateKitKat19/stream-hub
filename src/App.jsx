@@ -15,6 +15,7 @@ const LoginPage = lazy(() => import('./pages/LoginPage'));
 const StreamersPage = lazy(() => import('./pages/StreamersPage'));
 const Streamer = lazy(() => import('./pages/Streamer'));
 const JoinPage = lazy(() => import('./pages/JoinPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -67,6 +68,7 @@ export const App = () => {
             <PrivateRoute redirectTo="/login" component={<JoinPage />} />
           }
         />
+        <Route path="*" element={<NotFoundPage />}></Route>
       </Route>
     </Routes>
   );

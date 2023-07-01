@@ -1,11 +1,10 @@
 import { Box } from '@chakra-ui/react';
 import { Form } from 'components/SubmissionForm/SubmissionForm';
-const JoinPage = () => {
+export default function JoinPage ()  {
   return (
-    <Box>
+    <Box p={6}>
       <Form></Form>
     </Box>
   );
 };
 
-export default JoinPage;

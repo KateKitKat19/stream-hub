@@ -22,7 +22,10 @@ export const register = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      console.log(' data in error:', error.response.data.message);
+      return thunkAPI.rejectWithValue(
+        error.response.data.message ?? error.message
+      );
     }
   }
 );
@@ -36,7 +39,10 @@ export const logIn = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      console.log(' data in error:', error.response.data.message);
+      return thunkAPI.rejectWithValue(
+        error.response.data.message ?? error.message
+      );
     }
   }
 );

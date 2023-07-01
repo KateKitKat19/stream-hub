@@ -11,10 +11,7 @@ export const UserMenu = () => {
 
   const location = useLocation();
   const isJoinPageCurrent = location.pathname.includes('/join');
-  console.log(
-    '🚀 ~ file: UserMenu.jsx:17 ~ UserMenu ~ isJoinPageCurrent:',
-    isJoinPageCurrent
-  );
+
 
   return (
     <HStack alignItems={'space-between'} spacing={4}>

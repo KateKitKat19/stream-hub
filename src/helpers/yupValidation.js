@@ -27,4 +27,5 @@ export const validateSubmission = Yup.object({
     .min(3, 'Description must be minimum 3 digits!')
     .max(500, 'Description should have at most 500 characters!')
     .required('Description is required!'),
+  platform: Yup.string(),
 });

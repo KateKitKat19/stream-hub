@@ -8,11 +8,17 @@ export const StreamerCard = ({ streamer }) => {
       justify={'center'}
       rounded={'md'}
       flexDir={'column'}
-      bg={'#4EA699'}
+      bg={'#023C40'}
       p={6}
       boxShadow="base"
       flexGrow={1}
       height={'100%'}
+      _hover={{
+        shadow: 'md',
+        transform: 'translateY(-8px)',
+        transitionDuration: '0.25s',
+        transitionTimingFunction: 'ease-in-out',
+      }}
     >
       <Box
         color={'white'}
@@ -37,18 +43,17 @@ export const StreamerCard = ({ streamer }) => {
             {streamer.name}
           </Text>
 
-          <Text minW={'150px'} textAlign={'center'}>
+          <Text minW={'150px'} textAlign={'center'} maxW={'300px'}>
             {streamer.description}
           </Text>
           <Spacer></Spacer>
           <Text
-            bg={'teal.300'}
-            w={'100%'}
+            bg={'#4EA699'}
             rounded={'full'}
             fontSize="xl"
             mt={2}
             textAlign={'center'}
-            p={2}
+            p={'8px 18px'}
           >
             {streamer.platform}
           </Text>
