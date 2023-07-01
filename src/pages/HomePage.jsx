@@ -4,9 +4,9 @@ import { Container, ButtonGroup, Button, Text } from '@chakra-ui/react';
 export default function HomePage() {
   const navigate = useNavigate();
   return (
-    <Container centerContent mt="40px" gap="8">
+    <Container centerContent mt="140px" gap="8">
       <Text
-        bgGradient="linear(to-b, #00608f, #22c1c3)"
+        bgGradient="linear(to-b, #04a4a6,  #02537a)"
         bgClip="text"
         fontSize="6xl"
         fontWeight="extrabold"
