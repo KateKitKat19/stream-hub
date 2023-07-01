@@ -1,12 +1,19 @@
 import { StreamersList } from 'components/StreamersList/StreamersList';
-import { Form } from 'components/SubmissionForm/SubmissionForm';
+import { Text, Box } from '@chakra-ui/react';
 
 export default function StreamersPage() {
   return (
-    <div>
-      <h2>We`re glad to see you in our Stream-Hub</h2>
-      <Form></Form>
+    <Box mt={6}>
+      <Text
+        color={'#0E7C7B'}
+        fontSize="3xl"
+        fontWeight="extrabold"
+        textAlign="center"
+        flexWrap="nowrap"
+      >
+        Welcome to Stream Hub{' '}
+      </Text>
       <StreamersList></StreamersList>
-    </div>
+    </Box>
   );
 }

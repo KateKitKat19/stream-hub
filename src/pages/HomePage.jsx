@@ -12,6 +12,7 @@ export default function HomePage() {
         fontWeight="extrabold"
         textAlign="center"
         flexWrap="nowrap"
+        fontFamily="'Caprasimo', cursive"
       >
         Welcome to Stream Hub
       </Text>

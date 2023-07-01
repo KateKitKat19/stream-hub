@@ -37,7 +37,6 @@ export const RegisterForm = () => {
   };
 
   const handleSubmit = (values, { setSubmitting }) => {
-    console.log(values);
 
     dispatch(
       register({

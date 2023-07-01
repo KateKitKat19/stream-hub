@@ -14,6 +14,7 @@ const RegisterPage = lazy(() => import('./pages/RegisterPage'));
 const LoginPage = lazy(() => import('./pages/LoginPage'));
 const StreamersPage = lazy(() => import('./pages/StreamersPage'));
 const Streamer = lazy(() => import('./pages/Streamer'));
+const JoinPage = lazy(() => import('./pages/JoinPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -58,6 +59,12 @@ export const App = () => {
           path="/streamers/:streamerId"
           element={
             <PrivateRoute redirectTo="/login" component={<Streamer />} />
+          }
+        />
+        <Route
+          path="/join"
+          element={
+            <PrivateRoute redirectTo="/login" component={<JoinPage />} />
           }
         />
       </Route>

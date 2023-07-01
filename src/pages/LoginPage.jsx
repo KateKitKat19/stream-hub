@@ -1,7 +1,7 @@
 import { LoginForm } from 'components/LoginForm/LoginForm';
-import { Loader } from 'components/Loader/Loader';
 import { selectLoginError, selectRefreshing } from 'redux/auth/selectors';
 import { useSelector } from 'react-redux';
+import ErrorNotification from 'components/ErrorNotification/ErrorNotification';
 
 export default function Login() {
   const refreshing = useSelector(selectRefreshing);
@@ -9,16 +9,11 @@ export default function Login() {
 
   return (
     <>
-      {refreshing && !error && <Loader></Loader>}
-      {!refreshing && (
+      {!refreshing && error && <ErrorNotification errorMessage={error} />}
+      {!refreshing && !error && (
         <>
           <LoginForm />
         </>
-      )}
-      {!refreshing && error && (
-        <div>
-          Ooops, something went wrong! <span>{error}</span>
-        </div>
       )}
     </>
   );

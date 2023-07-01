@@ -4,6 +4,7 @@ import { StreamerCard } from 'components/StreamerCard/StreamerCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllStreamers } from 'redux/streamers/operations';
 import { selectAllStreamers } from 'redux/streamers/selectors';
+import { Box, SimpleGrid } from '@chakra-ui/react';
 
 export const StreamersList = () => {
   const dispatch = useDispatch();
@@ -16,17 +17,22 @@ export const StreamersList = () => {
   return (
     streamersList &&
     streamersList.length > 0 && (
-      <ul>
+      <SimpleGrid
+        minChildWidth="300px"
+        spacing="40px"
+        mt={8}
+        gridTemplateRows="1fr"
+      >
         {streamersList.map(streamer => {
           return (
-            <li key={streamer._id}>
+            <Box key={streamer._id} height={'100%'}>
               <Link to={`/streamers/${streamer._id}`}>
                 <StreamerCard streamer={streamer}></StreamerCard>
               </Link>
-            </li>
+            </Box>
           );
         })}
-      </ul>
+      </SimpleGrid>
     )
   );
 };

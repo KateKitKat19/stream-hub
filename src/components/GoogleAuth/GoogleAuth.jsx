@@ -1,12 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import jwt_decode from 'jwt-decode';
 import { useDispatch } from 'react-redux';
 import { register, logIn } from 'redux/auth/operations';
-import { Button, Center, Text } from '@chakra-ui/react';
+import { Button, Center } from '@chakra-ui/react';
 import { FcGoogle } from 'react-icons/fc';
 
 export const GoogleAuth = ({ type }) => {
   const dispatch = useDispatch();
+  const signinButtonRef = useRef(null);
 
   useEffect(() => {
     function handleLoginSuccess(res) {
@@ -35,25 +36,21 @@ export const GoogleAuth = ({ type }) => {
       callback: handleLoginSuccess,
     });
 
-    google.accounts.id.renderButton(document.getElementById('signinButton'));
+    google.accounts.id.renderButton(signinButtonRef.current, {
+      theme: 'transparent',
+      size: 'large',
+      text: type === 'login' ? 'Sign in with Google' : 'Sign up with Google',
+    });
   }, [dispatch, type]);
 
   return (
     <Center mt={6}>
       <Button
-        id="signinButton"
-        w={'full'}
-        size="lg"
-        variant={'outline'}
+        ref={signinButtonRef}
+        variant="ghost"
         leftIcon={<FcGoogle />}
-      >
-        <Center>
-          <Text>
-            {' '}
-            {type === 'login' ? 'Sign in with Google' : ' Sign up with Google'}
-          </Text>
-        </Center>
-      </Button>
+        _hover={{ bg: 'transparent' }}
+      ></Button>
     </Center>
   );
 };
