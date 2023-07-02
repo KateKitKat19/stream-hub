@@ -11,13 +11,14 @@ export const GoogleAuth = ({ type }) => {
         alignItems={'center'}
         leftIcon={<FcGoogle />}
         _hover={{
-          textDecoration:"none",
+          textDecoration: 'none',
           shadow: 'md',
           transitionDuration: '250ms',
           transitionTimingFunction: 'ease-in-out',
         }}
         variant={'outline'}
         size="lg"
+        href={'https://stream-hub-back-v1.onrender.com/api/auth/google'}
       >
         {type === 'login' ? 'Sign in with Google' : 'Sign up with Google'}
       </Button>
