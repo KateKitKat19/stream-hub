@@ -9,12 +9,7 @@ import { Loader } from 'components/Loader/Loader';
 export default function GooglePage() {
   const [searchParams] = useSearchParams();
   const params = Object.fromEntries([...searchParams]);
-  console.log('🚀 ~ file: GooglePage.jsx:11 ~ GooglePage ~ params:', params);
   const userSavedData = useSelector(selectUser);
-  console.log(
-    '🚀 ~ file: GooglePage.jsx:13 ~ GooglePage ~ userSavedData:',
-    userSavedData
-  );
   const dispatch = useDispatch();
 
   useEffect(() => {

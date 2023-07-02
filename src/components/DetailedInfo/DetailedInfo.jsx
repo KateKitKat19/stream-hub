@@ -54,7 +54,7 @@ export const DetailedInfo = ({ streamerInfo }) => {
           <Text fontSize={'lg'}>{description}</Text>
         </Box>
 
-        <Center w={'100%'} justifyContent={'space-around'}>
+        <Center w={'100%'} justifyContent={'space-around'} gap={4} alignItems={"flex-start"}>
           <Box display={'flex'} gap={4} flexDir={'column'}>
             <Button
               size={'lg'}
