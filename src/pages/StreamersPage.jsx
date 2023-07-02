@@ -1,18 +1,13 @@
 import { StreamersList } from 'components/StreamersList/StreamersList';
 import { Text, Box } from '@chakra-ui/react';
-import {  useSelector } from 'react-redux';
-import {
-  selectLoading,
-  selectError,
-} from 'redux/streamers/selectors';
+import { useSelector } from 'react-redux';
+import { selectLoading, selectError } from 'redux/streamers/selectors';
 import { Loader } from 'components/Loader/Loader';
 
-
 export default function StreamersPage() {
-    const loading = useSelector(selectLoading);
+  const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
 
-  
   return (
     <>
       {loading && !error && <Loader></Loader>}

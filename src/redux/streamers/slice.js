@@ -8,6 +8,13 @@ import {
   downvoteStreamer,
 } from './operations';
 
+const initialState = {
+  allStreamers: [],
+  selectedStreamer: null,
+  isLoading: false,
+  error: null,
+};
+
 const handlePending = state => {
   state.isLoading = true;
 };
@@ -19,12 +26,7 @@ const handleRejected = (state, action) => {
 
 const streamersSlice = createSlice({
   name: 'streamers',
-  initialState: {
-    allStreamers: [],
-    selectedStreamer: null,
-    isLoading: false,
-    error: null,
-  },
+  initialState,
   extraReducers: builder =>
     builder
       .addCase(fetchAllStreamers.pending, handlePending)

@@ -14,12 +14,13 @@ export default function GooglePage() {
 
   useEffect(() => {
     if (!params) return;
-    (async () => {
-      await dispatch(setGoogleData(params));
+    async function setData() {
+      dispatch(setGoogleData(params));
       if (userSavedData) {
-        await dispatch(refreshUser(userSavedData));
+        dispatch(refreshUser(userSavedData));
       }
-    })();
+    }
+    setData();
   }, [params, dispatch, userSavedData]);
 
   return <Loader></Loader>;

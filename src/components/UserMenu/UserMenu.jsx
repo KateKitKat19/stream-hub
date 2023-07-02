@@ -2,8 +2,6 @@ import { useDispatch } from 'react-redux';
 import { logOut } from '../../redux/auth/operations';
 import { Button, HStack } from '@chakra-ui/react';
 import { useLocation, useNavigate } from 'react-router-dom';
-// import { selectError } from 'redux/auth/selectors';
-// import { useSelector } from "react-redux";
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
