@@ -47,7 +47,7 @@ export const Form = () => {
       <Stack spacing={4} mx={'auto'} maxW={'lg'} py={6} px={6} align={'center'}>
         <Stack align={'center'}>
           <Heading fontSize={'2xl'} textAlign={'center'} color={'#183642'}>
-            Fill in the form add streamer
+            Fill in the form to add streamer
           </Heading>
         </Stack>
         <Box

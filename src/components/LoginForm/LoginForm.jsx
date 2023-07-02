@@ -23,6 +23,7 @@ import { GoogleAuth } from 'components/GoogleAuth/GoogleAuth';
 
 export const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -58,7 +59,7 @@ export const LoginForm = () => {
             Sign in
           </Heading>
         </Stack>
-        <Box rounded={'lg'} bg={'white'} boxShadow={'lg'} p={8} w={"400px"}>
+        <Box rounded={'lg'} bg={'white'} boxShadow={'lg'} p={8} w={'400px'}>
           <Formik
             initialValues={initialValues}
             validationSchema={validateLogin}
@@ -80,7 +81,12 @@ export const LoginForm = () => {
                     <FormLabel>Password</FormLabel>
                     <InputGroup>
                       <Field name="password">
-                        {({ field }) => <Input {...field} type="password" />}
+                        {({ field }) => (
+                          <Input
+                            {...field}
+                            type={showPassword ? 'text' : 'password'}
+                          />
+                        )}
                       </Field>
                       <InputRightElement h={'full'}>
                         <Button

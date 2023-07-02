@@ -10,11 +10,11 @@ export const StreamerCard = ({ streamer }) => {
       flexDir={'column'}
       bg={'#023C40'}
       p={6}
-      boxShadow="base"
       flexGrow={1}
       height={'100%'}
+      boxShadow="lg"
       _hover={{
-        shadow: 'md',
+        boxShadow: 'md',
         transform: 'translateY(-8px)',
         transitionDuration: '0.25s',
         transitionTimingFunction: 'ease-in-out',
