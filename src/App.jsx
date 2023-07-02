@@ -12,6 +12,7 @@ import { Loader } from 'components/Loader/Loader';
 const HomePage = lazy(() => import('./pages/HomePage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage'));
 const LoginPage = lazy(() => import('./pages/LoginPage'));
+const GooglePage = lazy(() => import('./pages/GooglePage'));
 const StreamersPage = lazy(() => import('./pages/StreamersPage'));
 const Streamer = lazy(() => import('./pages/Streamer'));
 const AddStreamerPage = lazy(() => import('./pages/AddStreamerPage'));
@@ -48,6 +49,15 @@ export const App = () => {
               redirectTo="/streamers"
               component={<LoginPage />}
             />
+          }
+        />
+        <Route
+          path="/google-redirect"
+          element={
+            <RestrictedRoute
+              redirectTo="/streamers"
+              component={<GooglePage />}
+            ></RestrictedRoute>
           }
         />
         <Route

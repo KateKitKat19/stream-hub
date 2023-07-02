@@ -22,6 +22,14 @@ const handleRejected = (state, action) => {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    setGoogleData(state, { payload }) {
+      state.user.name = payload.name;
+      state.user.email = payload.email;
+      state.token = payload.token;
+      state.isLoggedIn = true;
+    },
+  },
   extraReducers: builder =>
     builder
       .addCase(register.pending, handlePending)
@@ -65,4 +73,5 @@ const authSlice = createSlice({
       }),
 });
 
+export const { setUserData, setGoogleData } = authSlice.actions;
 export const authReducer = authSlice.reducer;
